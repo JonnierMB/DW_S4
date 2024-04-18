@@ -1,0 +1,161 @@
+@import url('https://fonts.googleapis.com/css2?family=Pacifico&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Jersey+20&display=swap');
+*{padding: 0; margin: 0; box-sizing: border-box; text-align: center;}
+.backgroundImg{
+    background-image: url(https://images2.alphacoders.com/952/952281.jpg);
+    background-repeat: no-repeat;
+    background-position: center center;
+    background-size: 100% 1850px;
+}
+.backgroundLayout{
+    width: 100%;
+    height: 100%;
+    background-color: rgba(0, 0, 0, 0.7);
+    justify-content: center;
+
+}
+.generalContainer{
+    display: flex;
+    width: 100%;
+    height: 100%;
+    justify-content: center;
+    flex-direction: column;
+    align-items: center;
+}
+.headerConfig{
+    display: flex;
+    margin: 20px;
+}
+body{
+    width: 100%;
+    height: 100vh;
+}
+main{
+    display: flex;
+    flex-direction: column;
+}
+.WebTitle{
+    font-family: "Jersey 20";
+    color: rgb(255, 255, 255);
+    font-weight: 300;
+    font-size:80px;
+    -webkit-text-stroke:1px rgb(87, 27, 27);
+    text-shadow: 6px 6px 7px black;
+    cursor:default;
+    user-select: none;
+}
+.centerLogo{
+    width: 100%;
+    display: flex;
+    justify-content: center;
+    text-align: center;
+}
+.logo{
+    display: flex;
+    width: 70px;
+    height: 70px;
+    justify-content: center;
+    text-align: center;
+    border-radius: 50%;
+    background-color: #1f1f1f;
+    border: 2px solid rgb(87, 27, 27); 
+    box-shadow: 0px 5px 20px 5px #0f0f0f; 
+    color: rgb(255, 255, 255);  
+    text-shadow: 4px 4px 7px black;
+    font-size: 50px; 
+}
+
+.search{
+    display: flex;
+    justify-content: center;
+}
+.searchBar{
+    width: 350px;
+    height: 40px;
+    border-radius:  6px;
+    margin: 20px 5px 20px 20px;
+    font-weight: 700;
+    border: 3px solid rgb(37, 13, 13);
+    background-color: rgba(43, 19, 19, 0.7);
+    box-shadow: 0px 5px 20px 3px #0f0f0f;
+    color: white;
+
+}
+.buttonItem{
+    margin-top: 3%;
+    width: 50px;
+    height: 50px;
+    background-color: rgba(43, 19, 19, 0.3);
+    box-shadow: 0px 5px 20px 3px #0f0f0f;
+    border-radius: 50%;
+
+}
+.lensConfig{
+    font-size: 25px;
+    margin-left: .16em;
+    font-weight: 700;
+    color: rgb(160, 160, 160);
+    -webkit-text-stroke:1px rgb(0, 0, 0);
+    cursor:pointer;
+}
+.icon-search-1{
+    cursor:pointer;
+}
+
+.menuOptions{
+    display: flex;
+    text-align: center;
+    justify-content: center;
+    font-size: 30px;
+    -webkit-text-stroke:1px rgb(161, 161, 161);
+}
+.menulogoConfig{
+    position: absolute;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+}
+.menuItem{
+    list-style: none;
+    position: absolute;
+    border-radius: 2%;
+    font-size: 18px;
+    width: 250px;
+    margin: 15px;
+    transition: all 150ms ease;
+    background-color: rgba(31, 31, 31, 0.6);
+    border: 3px solid rgb(37, 13, 13);
+    box-shadow: 0px 5px 20px 3px #0f0f0f;
+    cursor: pointer;
+    user-select: none;
+}
+.menuItem li div{
+    display: block;
+    padding: 10px;
+    border-left:2px solid transparent;
+    transition: all 150ms ease;
+    border-radius: 6px;
+}
+.menuItem li div:hover{
+    border-left: 2px solid rgb(161, 161, 161);
+    background-color: rgba(43, 19, 19, 0.7);
+    
+}
+#menulogoConfig{
+    display: none;
+}
+
+#menulogoConfig:checked ~ .menuHide{
+    opacity: 1;
+    visibility: visible;
+}
+
+.menulogoConfig label{
+    cursor:pointer;
+}
+.menuHide{
+    position: relative;
+    transition: all 150ms ease;
+    opacity: 0;
+    visibility: hidden;
+}
