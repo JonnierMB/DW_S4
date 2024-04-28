@@ -1,5 +1,6 @@
 @import url('https://fonts.googleapis.com/css2?family=Pacifico&display=swap');
 @import url('https://fonts.googleapis.com/css2?family=Jersey+20&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Poppins:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&display=swap');
 *{padding: 0; margin: 0; box-sizing: border-box; text-align: center;}
 .backgroundImg{
     background-image: url(https://images2.alphacoders.com/952/952281.jpg);
@@ -29,6 +30,8 @@
 body{
     width: 100%;
     height: 100vh;
+    overflow-x: hidden;
+    overflow-y: hidden;
 }
 main{
     display: flex;
@@ -107,34 +110,51 @@ main{
     text-align: center;
     justify-content: center;
     font-size: 30px;
-    -webkit-text-stroke:1px rgb(161, 161, 161);
+
 }
 .menulogoConfig{
     position: absolute;
     display: flex;
     align-items: center;
-    justify-content: space-between;
+    justify-content: center;
+    -webkit-text-stroke:1px rgb(161, 161, 161);
+    width: 60px;
+    height:60px;
+    color: #1f1f1f;
+}
+.menulogoConfig:hover{
+    align-items: center;
+    justify-content: center;
+    width: 60px;
+    height: 60px;
+    background-color:#1f1f1f;
+    border: 1px solid rgb(28, 12, 12);
+    color: rgb(175, 175, 175);
+    border-radius: 20%;
+    box-shadow: 0px 5px 6px 6px #0f0f0f34;
 }
 .menuItem{
     list-style: none;
     position: absolute;
-    border-radius: 2%;
+    border-radius: 2px;
     font-size: 18px;
     width: 250px;
     margin: 15px;
-    transition: all 150ms ease;
-    background-color: rgba(31, 31, 31, 0.6);
-    border: 3px solid rgb(37, 13, 13);
-    box-shadow: 0px 5px 20px 3px #0f0f0f;
     cursor: pointer;
     user-select: none;
+    transition: all 150ms ease;
+    background-color: rgba(31, 31, 31, 0.6);
+    /* border: 3px solid rgba(37, 13, 13, 0.7); */
+    box-shadow: 0px 5px 20px 3px #0f0f0f;
+    color: rgb(161, 161, 161);
+    font-weight: bold;
 }
 .menuItem li div{
     display: block;
     padding: 10px;
     border-left:2px solid transparent;
     transition: all 150ms ease;
-    border-radius: 6px;
+    border-radius: 2px;
 }
 .menuItem li div:hover{
     border-left: 2px solid rgb(161, 161, 161);
@@ -158,4 +178,190 @@ main{
     transition: all 150ms ease;
     opacity: 0;
     visibility: hidden;
+}
+.filterTitle{
+    background-color: rgba(19, 19, 19, 0.8);
+    cursor: default;
+    border: 4px solid rgba(19, 19, 19, 0.8);
+    /* border-radius: 2px; */
+}
+
+/*Cards*/
+.cardsContainer{
+    display: flex;
+    justify-content: center;
+    flex-wrap: wrap;
+    width: 100%;
+    height: 90vh;
+}
+
+.container{
+    display: flex;
+    justify-content: center;
+    flex-wrap: wrap;
+    width: 100%;
+}
+
+.mealTarget{
+    width: 430px;
+    height: 230px; 
+    vertical-align: top;
+    margin-right: 15px;
+    display: flex;
+    margin-bottom: 15px;
+    background-color: rgba(172, 162, 162, 0.8);
+    box-shadow: 0 0 20px rgba(0, 0, 0, 1);
+    border-radius: 2px;
+    cursor: pointer;
+}
+
+.mealTarget:hover{
+    box-shadow: 0 0 20px rgba(255, 229, 229, 0.6);
+}
+
+.MealThumb{
+    width: 420px;
+    height: 230px;
+    object-fit: cover;
+}
+.MealThumb img{
+    width: 100%;
+    height: 100%;
+    border-radius: 2px;
+}
+
+.mealName{
+    font-size: 18px;
+    font-weight: bold;
+    margin-left: 8px;
+    margin-bottom: 5px;
+    justify-content: center;
+    text-align: center;
+    margin-top: 23%;
+    user-select: none;
+    color: #1f1f1f;
+    font-weight: 400;
+}
+
+.cardsMenu{
+    width: 100%;
+    height: 100vh;
+    position: absolute;
+    background-color: rgba(19, 19, 19, 0.93);
+    z-index: 3;
+    transition: all 350ms ease;
+    visibility: hidden;
+    transform: translateY(100%);
+    overflow-x: hidden;
+    flex-direction: column;
+}
+
+.cardsMenu::-webkit-scrollbar {
+    width: 10px;
+    /* width of the entire scrollbar */
+}
+
+.cardsMenu::-webkit-scrollbar-track {
+    background: rgba(75, 75, 75, 0.3);
+
+    /* color of the tracking area */
+}
+
+.cardsMenu::-webkit-scrollbar-thumb {
+    background-color: rgba(0, 0, 0, 0.3);
+    /* color of the scroll thumb */
+
+    /* roundness of the scroll thumb */
+    border: 1px solid rgb(0, 0, 0);
+    /* creates padding around scroll thumb */
+}
+
+.exit{
+    margin: 20px;
+    width: 30px;
+    height: 30px;
+    font-weight: 800;
+    padding: 3px;
+    color: #fff;
+    display: flex;
+    font-family: "poppins";
+    justify-content: center;
+    text-align: center;
+    user-select: none;
+    cursor: pointer;
+}
+.exit:hover{
+    background-color: #0f0f0f;
+    border-radius: 5px;
+}
+
+/*Meal*/
+.oneMealTarget{
+    width: 100%;
+    height: 530px; 
+    vertical-align: top;
+    margin: center center;
+    display: flex;
+    margin-bottom: 15px;
+    background-color: rgba(172, 162, 162, 0.8);
+    box-shadow: 0 0 20px rgba(0, 0, 0, 1);
+    cursor: pointer;
+}
+
+.oneMealthumb1{
+    width: 100%;
+    border-radius: 2px;
+    height: 250px;
+    display: flex;
+    margin: center center;
+    justify-content: center;
+    object-fit: cover;
+}
+.oneMealthumb1 img{
+    width: 350px;
+    height: 100%;
+    border-radius: 5px;
+    box-shadow: 0 0 20px rgba(255, 237, 237, 0.4);
+}
+.oneMealtext1{
+    display: flex;
+    text-align: center;
+    justify-content: center;
+    flex-direction: column;
+    margin-top: 15px;
+    background-color: rgba(172, 162, 162, 0.7);
+}
+.oneMealname1{
+    font-size: 28px;
+    font-weight: bold;
+    margin-left: 8px;
+    margin-bottom: 5px;
+    justify-content: center;
+    text-align: center;
+    user-select: none;
+    color: #1f1f1f;
+    font-weight: 900;
+
+}
+.oneMealinstruction1{
+    font-size: 28px;
+    font-weight: bold;
+    margin-left: 8px;
+    margin-bottom: 5px;
+    justify-content: center;
+    text-align: center;
+    user-select: none;
+    color: #1f1f1f;
+    font-weight: 400;
+}
+.oneMealingredient1{
+    font-size: 28px;
+    font-weight: bold;
+    margin-left: 8px;
+    margin-bottom: 5px;
+    justify-content: center;
+    text-align: center;
+    user-select: none;
+    color: #1f1f1f;
+    font-weight: 400;
 }
