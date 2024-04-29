@@ -26,6 +26,8 @@ async function getDataMealDB(url) {
         default:
             cardMenu.style.transform = `translateY(${0}%)`;
             cardMenu.style.visibility = 'visible';
+            changeField = document.querySelector('.searchBar');
+            changeField.placeholder = "Meal Name";
             createCards(datas);
             console.log("no nulo");
     }
