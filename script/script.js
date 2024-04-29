@@ -16,10 +16,8 @@ async function searchApiMealDB(url) {
 async function getDataMealDB(url) {
     
     const datas = await searchApiMealDB(url);
-    console.log(datas.meals)
     switch(datas.meals){
         case null: 
-            console.log("nulo");
             changeField = document.querySelector('.searchBar');
             changeField.placeholder = "Query error try again";
         break
@@ -29,7 +27,6 @@ async function getDataMealDB(url) {
             changeField = document.querySelector('.searchBar');
             changeField.placeholder = "Meal Name";
             createCards(datas);
-            console.log("no nulo");
     }
     // if(datas.meal!== null){
     //     createCards(datas);
