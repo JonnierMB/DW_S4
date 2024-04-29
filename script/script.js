@@ -7,13 +7,35 @@ async function searchApiMealDB(url) {
 
     } catch (error) {
         console.error(`No Element Found: ${error} Number Error`);
+
     }
 }
 
 
 //Get static data
 async function getDataMealDB(url) {
+    
     const datas = await searchApiMealDB(url);
+    console.log(datas.meals)
+    switch(datas.meals){
+        case null: 
+            console.log("nulo");
+            changeField = document.querySelector('.searchBar');
+            changeField.placeholder = "Query error try again";
+        break
+        default:
+            cardMenu.style.transform = `translateY(${0}%)`;
+            cardMenu.style.visibility = 'visible';
+            createCards(datas);
+            console.log("no nulo");
+    }
+    // if(datas.meal!== null){
+    //     createCards(datas);
+    // }
+}
+
+//Create cards
+function createCards(datas){
     dataLength = datas.meals.length;
     var divCards = document.querySelector(".cardsContainer");
     const divContainer = document.createElement("div");
@@ -31,9 +53,7 @@ async function getDataMealDB(url) {
                 getIngredientIndex.push(datas.meals[selectMeal][key]);
             }
         }
-        var Ingredientnonull = getIngredientIndex.filter(function (elemento) {
-            return elemento !== null;
-        });
+        var Ingredientnonull = getIngredientIndex.filter(function (elemento) {return elemento !== null;});
         //Get image data
         let getImage = datas.meals[selectMeal].strMealThumb;
 
@@ -74,66 +94,58 @@ async function getDataMealDB(url) {
     } else { //When the filter is other
         let getNames = datas.meals.map(meal => meal.strMeal);
         let getThumb = datas.meals.map(meal => meal.strMealThumb);
-        if (dataLength > 18) {
-            for (var i = 0; i < 18; i++) {//array of MealsName higher than 18
-                var mealCard = document.createElement("div");
-                mealCard.setAttribute("class", "mealTarget");
-                var mealthumb = document.createElement("div");
-                mealthumb.setAttribute("class", "MealThumb");
-                var img = document.createElement("img")
-                img.setAttribute("src", getThumb[i]);
-                var mealname = document.createElement("div");
-                mealname.setAttribute("class", "mealName");
-                mealname.innerHTML = `<p>${getNames[i]}</p>`;
-                mealthumb.appendChild(img);
-                mealCard.appendChild(mealthumb);
-                mealCard.appendChild(mealname);
-                divContainer.appendChild(mealCard);
-                mealCard.addEventListener("click",function(){
-                    console.log("holi");
-                    console.log(mealname.innerHTML); //nodoValue
-                })
-            }
-        } else {
-            for (var i = 0; i < dataLength; i++) {//array of MealsName lower than 18
-                var mealCard = document.createElement("div");
-                mealCard.setAttribute("class", "mealTarget");
-                var mealthumb = document.createElement("div");
-                mealthumb.setAttribute("class", "MealThumb");
-                var img = document.createElement("img")
-                img.setAttribute("src", getThumb[i]);
-                var mealname = document.createElement("div");
-                mealname.setAttribute("class", "mealName");
-                mealname.innerHTML = `<p>Nombre: ${getNames[i]} </p>`;
-                mealthumb.appendChild(img);
-                mealCard.appendChild(mealthumb);
-                mealCard.appendChild(mealname);
-                divContainer.appendChild(mealCard);
-            }
-
+        dataLength = dataLength > 18 ? 18 : dataLength;
+        for (let i = 0; i < dataLength; i++) {
+            const mealCard = document.createElement("div");
+            mealCard.setAttribute("class", "mealTarget");
+            const mealthumb = document.createElement("div");
+            mealthumb.setAttribute("class", "MealThumb");
+            const img = document.createElement("img")
+            img.setAttribute("src", getThumb[i]);
+            const mealname = document.createElement("div");
+            mealname.setAttribute("class", "mealName");
+            mealname.innerHTML = `<p>${getNames[i]}</p>`;
+            mealthumb.appendChild(img);
+            mealCard.appendChild(mealthumb);
+            mealCard.appendChild(mealname);
+            divContainer.appendChild(mealCard);
+            //get new API Query
+            mealCard.addEventListener("click",() => {
+                _filter = 'search.php?s=';
+                changeField = document.querySelector('.searchBar');
+                changeField.placeholder = "Meal Name";
+                newQuery(getNames[i]);
+            });
         }
     }
     divCards.appendChild(divContainer);
+    //Delete cards
     if (exitMenu.addEventListener) {
         divCards.removeChild(divCards.firstChild);
     }
 }
+
+
 //Search DB
 const searchButton = document.querySelector('.search button');
 const searchInput = document.querySelector('.search input');
 searchButton.addEventListener(
     "click",
     () => {
-        var getInput = searchInput.value;
-        getInput = getInput.trim();
-        getInput = getInput.replace(/ /g, "%20");
-        const url = `${apiUrl}${_filter}${getInput}`;
-        getDataMealDB(url);
-        cardMenu.style.transform = `translateY(${0}%)`;
-        cardMenu.style.visibility = 'visible';
+        const getInput = searchInput.value;
+        newQuery(getInput);
+        // cardMenu.style.transform = `translateY(${0}%)`;
+        // cardMenu.style.visibility = 'visible';
         checkbox.checked = false;
     }
 )
+function newQuery(getdata){
+    getdata = getdata.trim();
+    getdata = getdata.replace(/ /g, "%20");
+    const url = `${apiUrl}${_filter}${getdata}`;
+    searchInput.value = "";
+    getDataMealDB(url);
+}
 
 //Select _filter
 const selectMealName = document.querySelector('.mealEvent');
